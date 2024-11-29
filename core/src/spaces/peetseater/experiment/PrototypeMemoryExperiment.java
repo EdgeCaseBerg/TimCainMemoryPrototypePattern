@@ -13,7 +13,8 @@ public class PrototypeMemoryExperiment extends ApplicationAdapter {
 	Texture img;
 	Texture sprite;
 	BitmapFont font;
-	
+	Memory memory;
+
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
@@ -22,16 +23,19 @@ public class PrototypeMemoryExperiment extends ApplicationAdapter {
 		font = new BitmapFont();
 		font.setColor(Color.BLACK);
 		font.setUseIntegerPositions(true);
+		memory = new Memory();
 	}
 
 	@Override
 	public void render () {
 		int fps =  Gdx.graphics.getFramesPerSecond();
+		memory.calculateMemory();
 		ScreenUtils.clear(1, 0, 0, 1);
 		batch.begin();
 		batch.draw(img, 0, 0);
 		batch.draw(sprite, 320, 240);
 		font.draw(batch, ""+ fps, 500f, 460f);
+		font.draw(batch, memory.used() + "MB", 500f, 440f);
 		batch.end();
 	}
 	
