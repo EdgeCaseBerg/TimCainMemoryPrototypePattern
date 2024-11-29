@@ -10,6 +10,7 @@ public class DesktopLauncher {
 		Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
 		config.setForegroundFPS(60);
 		config.setTitle("PrototypeMemoryExperiment");
+		config.setWindowedMode(640, 480);
 		new Lwjgl3Application(new PrototypeMemoryExperiment(), config);
 	}
 }
